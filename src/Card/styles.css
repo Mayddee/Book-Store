@@ -1,0 +1,30 @@
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 7; 
+    /* Ограничиваем до 7 строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Добавляем многоточие */
+    line-height: 1.5em; 
+    /* Высота строки, можно изменить для вашего дизайна */
+    max-height: 10.5em; 
+    /* 7 строк по 1.5em (line-height) */
+}
+.box {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--foreground-color);
+    color: var(--secondary-text-color);
+    
+}
+.card {
+    margin-bottom: 40px;
+    transition: transform 0.3s ease; 
+}
+.card:hover{
+    transform: scale(1.05);
+}
+img {
+    width: 300px;
+    height: 300px;
+}

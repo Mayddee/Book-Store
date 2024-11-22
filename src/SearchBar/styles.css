@@ -1,0 +1,117 @@
+/* Search bar container */
+.search-bar-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Adjust width if necessary */
+    margin: 0 auto;
+}
+
+/* Input field */
+label {
+    position: relative;
+    width: 100%; /* Полная ширина контейнера */
+}
+
+input[name="search"] {
+    /* width: calc(100% - 80px); учитывет ширину кнопки */
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[name="search"]:focus {
+    border-color: var(--foreground-color);
+}
+
+/* Dropdown container */
+.dropdown {
+    position: absolute; /* Абсолютное позиционирование относительно контейнера */
+    top: 100%; /* Расположить прямо под input */
+    left: 0;
+    width: 100%;/* Ширина совпадает с шириной input */
+    max-height: 400px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    
+}
+
+/* Individual dropdown item */
+.drop {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ensure it matches dropdown width */
+}
+
+.drop:last-child {
+    border-bottom: none;
+}
+
+.drop:hover {
+    background-color: #f9f9f9;
+}
+
+/* Book image */
+.book-image {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Book details */
+.book-details {
+    flex: 1;
+}
+
+.book-details h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Search bar wrapper */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Search button */
+.search-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Add some padding */
+    font-size: 16px; /* Slightly larger font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.search-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}

@@ -1,0 +1,38 @@
+.mode-container {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+
+}
+.mode {
+    visibility: hidden;
+
+}
+.mode + label {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--prinmary-text-color);
+}
+.mode + label::before {
+    content: "";
+    height: 1em;
+    width: 2em;
+    border-radius: 1em;
+    background-color: var(--toggle-bg);
+    margin-right: 0.5em;
+    transition: background-color 400ms ease-in-out, transform 400ms ease-in-out;
+}
+.mode + label::after {
+    content: "";
+    height: 0.8em;
+    width: 0.8em;
+    border-radius: 1em;
+    background-color: var(--toggle-fg);
+    position: absolute;
+    left: 5px;
+}
+.mode:checked + label::after {
+    transform: translateX(20px);
+}
