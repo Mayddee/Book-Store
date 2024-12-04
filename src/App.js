@@ -50,52 +50,41 @@ function App() {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
 
-  useEffect(()=>{
-      axios.get(API_URL).then(res => {
-          console.log(res.data)
-          const fetchedBooks = res.data;
-
-          setBooks(res.data)
-
-      //     fetchedBooks.forEach((book) => {
-      //       const bookGenres = book.genre_list.split(',')
-      //       // if(book[genres]){
-      //         console.log("book genres: ", book.genre_list)
-      //         bookGenres.forEach((genre) => {
-      //           if(!genres.some((thisGenre) => thisGenre === genre)){
-      //             genres.push(genre)
-      //           }
-      //         })
-              
-      //       // }
-      //       console.log("book genres2: ", bookGenres)
-      //       return {fetchedBooks}
-      //     })
-          
-
-      // }).then((fetchedBooks) => {
-      //   console.log("Genres: ", genres, ", length: ", genres.length)
-      //   const randomIndex = Math.floor(Math.random() * genres.length)
-      //   console.log("Random index: ", randomIndex)
-
-      //   setFilteredByGenre((fetchedBooks.filter((book) => {
-      //     const bookGenres = book.genre_list.split(',')
-
-      //     return bookGenres.some((genre) => {
-      //       if(genres.length === 0) return false
-      //       console.log("genre that array is filtered by: ", genres[randomIndex])
-      //       return genre === genres[randomIndex]
-
-      //     })
-      //   })))
-      //   console.log("Genres: ", genres)
-      }
-            
-      )
-      .catch(err => console.log(err))
-
-      
-  }, [])
+  useEffect(() => {
+    axios.get(API_URL)
+      .then(res => {
+        const fetchedBooks = res.data;
+        console.log("Fetched Books:", fetchedBooks);
+        setBooks(fetchedBooks);
+  
+        fetchedBooks.forEach((book) => {
+          const bookGenres = book.genre_list.split(',');
+          console.log("book genres: ", book.genre_list);
+  
+          bookGenres.forEach((genre) => {
+            if (!genres.includes(genre)) {
+              genres.push(genre);
+            }
+          });
+        });
+  
+        console.log("Genres: ", genres, ", length: ", genres.length);
+  
+        // Filter books by a random genre
+        const randomIndex = Math.floor(Math.random() * genres.length);
+        console.log("Random index: ", randomIndex);
+  
+        const booksFilteredByGenre = fetchedBooks.filter((book) => {
+          const bookGenres = book.genre_list.split(',');
+          return bookGenres.some((genre) => genre === genres[randomIndex]);
+        });
+  
+        setFilteredByGenre(booksFilteredByGenre);
+        console.log("Books filtered by a random genre: ", booksFilteredByGenre);
+      })
+      .catch(err => console.error("Error fetching data:", err));
+  }, []);
+  
 
   console.log("Books filtered by a random genre: ", filteredByGenre)
 

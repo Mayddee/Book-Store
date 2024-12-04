@@ -57,7 +57,8 @@ const Favourite = memo(({id, book}) => {
                 }} size={20} color={favouritesChecker(book.id) ? "red" : "grey"} />
             </label>
              <span style={{
-                fontSize: "16px",
+                fontSize: "12px",
+                color: "black"
 
              }} >{favouritesChecker(book.id) ? "Remove From Favourites" : "Add To Favourites"}</span>
             </button>
